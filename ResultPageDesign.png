@@ -1,0 +1,61 @@
+from PIL import Image, ImageDraw, ImageFont
+
+import os
+
+
+
+# Ensure docs directory exists
+
+docs_dir = "/mnt/data/docs"
+
+os.makedirs(docs_dir, exist_ok=True)
+
+
+
+# Create placeholder image for ResultPageDesign.png
+
+img_path = os.path.join(docs_dir, "ResultPageDesign.png")
+
+img = Image.new("RGB", (800, 400), color=(245, 245, 245))
+
+draw = ImageDraw.Draw(img)
+
+
+
+# Draw title text
+
+title_text = "WorldAi Result Page Design"
+
+font = ImageFont.load_default()
+
+text_width, text_height = draw.textsize(title_text, font=font)
+
+draw.text(((800 - text_width) / 2, 50), title_text, fill=(0, 0, 0), font=font)
+
+
+
+# Draw sample sections
+
+sections = ["Summarized Notes", "Rephrased Text", "Translated Content"]
+
+y = 150
+
+for section in sections:
+
+    draw.rectangle([50, y, 750, y+70], outline=(0, 0, 0), width=2)
+
+    sec_w, sec_h = draw.textsize(section, font=font)
+
+    draw.text((60, y+25), section, fill=(0, 0, 0), font=font)
+
+    y += 100
+
+
+
+# Save image
+
+img.save(img_path)
+
+
+
+img_path
