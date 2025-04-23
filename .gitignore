@@ -1,0 +1,11 @@
+# Recreate the .gitignore file for download
+gitignore_path = "/mnt/data/.gitignore"
+with open(gitignore_path, "w") as f:
+    f.write("""\
+*.iml
+.idea/
+*.log
+.DS_Store
+""")
+
+gitignore_path
